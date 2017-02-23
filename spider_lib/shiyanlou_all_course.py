@@ -1277,8 +1277,8 @@ def main():
 
     </body>'''
     soup = BeautifulSoup(html, 'lxml')
-    # res = requests.get('https://www.shiyanlou.com/courses/')
-    # soup = BeautifulSoup(res.text, 'lxml')
+    res = requests.get('https://www.shiyanlou.com/courses/')
+    soup = BeautifulSoup(res.text, 'lxml')
     course_link = "https://www.shiyanlou.com/courses/?course_type=all&tag=all&fee=all&page={}"
     page = soup.find_all('ul',{'class':'pagination'})
     if len(page)<1:
