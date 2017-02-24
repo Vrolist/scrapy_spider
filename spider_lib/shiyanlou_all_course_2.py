@@ -1027,7 +1027,10 @@ def parse_content(url, title, tag, study_num):
         if type_list.index(i)!=0 and type_list.index(i)!=len(type_list)-1:
             types.append(i.get_text())
     info = soup.find('div',{'class':'course-infobox-content'})
-    info = info.find('p').get_text()
+    try:
+        info = info.find('p').get_text()
+    except:
+        info = "无介绍"
     name = soup.find('div',{'class':'name'})
     name = name.find('strong').get_text()
     labs = soup.find('div',{'id':'labs'})
