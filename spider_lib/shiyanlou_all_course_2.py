@@ -1036,7 +1036,10 @@ def parse_content(url, title, tag, study_num):
             types.append(i.get_text())
     info = soup.find('div',{'class':'course-infobox-content'})
     info = info.find('p').get_text()
-    print(info)
+    name = soup.find('div',{'class':'name'})
+    name = name.find('strong').get_text()
+    print(name)
+
 
 def get_course_link(url):
     res = requests.get(url)
