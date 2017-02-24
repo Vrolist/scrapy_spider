@@ -1052,7 +1052,6 @@ def get_course_link(url):
         title = i.find('span', {'class': 'course-title'}).get_text()
         study_people = i.find('span', {'class': 'course-per-num', 'class': 'pull-left'}).get_text()
         study_people = re.sub("\D", "", study_people)  # 数字这里有太多的空格和回车，清理一下
-        study_num  = study_num + int(study_people)
         try:
             tag = i.find('span', {'class': 'course-per-num', 'class': 'pull-right'}).get_text()
         except:
