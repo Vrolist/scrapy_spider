@@ -43,13 +43,10 @@ def main():
             li_num = 0
         if li_num > page_num:
             page_num = li_num
-    # print(page_num,type(page_num))
     for i in range(1,page_num+1):
-        # print(course_link.format(i))
         get_course_link(course_link.format(i))
 
 
 if __name__ == "__main__":
     main()
     print("课程总数：{}   学习总次数：{}".format(course_count, study_num))
-    # get_course_link('www.demo.com')
