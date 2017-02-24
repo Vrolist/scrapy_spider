@@ -11,6 +11,7 @@ def get_course_link(url):
     # soup = BeautifulSoup(html, 'lxml')
     course = soup.find_all('div', {'class': 'col-md-4', 'class': 'col-sm-6', 'class': 'course'})
     for i in course:
+        global count
         count = count + 1
         href = i.find('a',{'class':'course-box'}).get('href')
         title = i.find('span', {'class': 'course-title'}).get_text()
