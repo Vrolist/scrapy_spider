@@ -206,7 +206,10 @@ html = '''<body>
             <div role="tabpanel" class="tab-pane active" id="labs">
 
 
+<div class="lab-item ">
 
+    <div class="lab-item-title" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="HTML5 Canvas小游戏">HTML5 Canvas小游戏</div>
+</div>
 
 
     <div class="lab-item ">
@@ -218,17 +221,6 @@ html = '''<body>
     <div class="lab-item-index">第1节</div>
     <div class="lab-item-title" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="HTML5 Canvas小游戏">HTML5 Canvas小游戏</div>
     <div class="pull-right lab-item-ctrl">
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1026,9 +1018,9 @@ html = '''<body>
 
 </body>'''
 def parse_content(url, title, tag, study_num):
-    # res = requests.get(url)
-    # soup = BeautifulSoup(res.text, 'lxml')
-    soup = BeautifulSoup(html, 'lxml')
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text, 'lxml')
+    # soup = BeautifulSoup(html, 'lxml')
     type_list = soup.select('ol[class=breadcrumb] > li > a')
     types = []
     for i in type_list:
@@ -1044,7 +1036,11 @@ def parse_content(url, title, tag, study_num):
     for i in test_list:
         name = i.find('div',{'class':'lab-item-title'}).get_text()
         tests_name.append(name)
-    print(tests_name)
+    print("课程名：{}    老师：{}    tag:{}    学习人数：{}    类型：{}    简介：{}".format(title,name,tag,study_num,'&'.join(types),info))
+    for i in tests_name:
+        print(i)
+    print('*'*100)
+
 
 
 def get_course_link(url):
@@ -1061,6 +1057,7 @@ def get_course_link(url):
             tag = i.find('span', {'class': 'course-per-num', 'class': 'pull-right'}).get_text()
         except:
             tag = "课程"
+        parse_content(url=host_url.format(href),title=title,tag=tag,study_num=study_people)
         # print("{}    学习人数:{}    {}   课程链接:{}\n".format(tag, study_people, title,host_url.format(href) ))
 
 def main():
@@ -1085,5 +1082,6 @@ def main():
 
 
 if __name__ == "__main__":
-    # main()
-    parse_content('www.demo.com','title','course','12138')
+    main()
+    # parse_content('url','title','tag','12138')
+
