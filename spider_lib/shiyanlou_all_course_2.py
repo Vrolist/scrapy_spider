@@ -1206,12 +1206,10 @@ html = '''<body>
 
 </body>'''
 def parse_content(url, title, tag, study_num):
+    print(url, '&' * 10)
     res = requests.get(url)
     soup = BeautifulSoup(res.text, 'lxml')
     # soup = BeautifulSoup(html, 'lxml')
-    if res.status_code != 200:
-        print(url,'&'*10)
-        time.sleep(5)
     type_list = soup.select('ol[class=breadcrumb] > li > a')
     types = []
     for i in type_list:
@@ -1222,15 +1220,18 @@ def parse_content(url, title, tag, study_num):
         info = info.find('p').get_text()
     except:
         info = "无介绍"
-    name = soup.find('div',{'class':'name'})
-    name = name.find('strong').get_text()
+    teacher = soup.find('div',{'class':'name'})
+    try:
+        teacher = teacher.find('strong').get_text()
+    except:
+        teacher = "匿名"
     labs = soup.find('div',{'id':'labs'})
     test_list = labs.find_all('div',{'class':'lab-item'})
     tests_name = []
     for i in test_list:
         name = i.find('div',{'class':'lab-item-title'}).get_text()
         tests_name.append(name)
-    print("课程名：{}    老师：{}    tag:{}    学习人数：{}    类型：{}    简介：{}".format(title,name,tag,study_num,'&'.join(types),info))
+    print("课程名：{}    老师：{}    tag:{}    学习人数：{}    类型：{}    简介：{}".format(title,teacher,tag,study_num,'&'.join(types),info))
     for i in tests_name:
         print(i)
     print('*'*100)
