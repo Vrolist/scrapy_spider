@@ -1205,6 +1205,12 @@ html = '''<body>
 
 
 </body>'''
+
+def write_file(string):
+    log = open('/home/shiyanlou/Desktop/shiyanlou_spider.log','a')
+    log.write(string+'/n')
+    log.close()
+
 def parse_content(url, title, tag, study_num):
     print(url, '&' * 10)
     res = requests.get(url)
@@ -1231,10 +1237,11 @@ def parse_content(url, title, tag, study_num):
     for i in test_list:
         name = i.find('div',{'class':'lab-item-title'}).get_text()
         tests_name.append(name)
-    print("课程名：{}    老师：{}    tag:{}    学习人数：{}    类型：{}    简介：{}".format(title,teacher,tag,study_num,'&'.join(types),info))
+    write_file("课程名：{}    老师：{}    tag:{}    学习人数：{}    类型：{}".format(title,teacher,tag,study_num,'&'.join(types)))
+    write_file("简介：{}".format(info))
     for i in tests_name:
-        print(i)
-    print('*'*100)
+        write_file(i)
+    write_file('*'*100)
 
 
 
