@@ -3,12 +3,15 @@ import re
 from bs4 import BeautifulSoup
 
 host_url = "http://www.shiyanlou.com{}"
+
+count = 0
 def get_course_link(url):
     res = requests.get(url)
     soup = BeautifulSoup(res.text, 'lxml')
     # soup = BeautifulSoup(html, 'lxml')
     course = soup.find_all('div', {'class': 'col-md-4', 'class': 'col-sm-6', 'class': 'course'})
     for i in course:
+        count = count + 1
         href = i.find('a',{'class':'course-box'}).get('href')
         title = i.find('span', {'class': 'course-title'}).get_text()
         study_people = i.find('span', {'class': 'course-per-num', 'class': 'pull-left'}).get_text()
@@ -44,4 +47,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    print("课程总数：{}".format(count))
     # get_course_link('www.demo.com')
