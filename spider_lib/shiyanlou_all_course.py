@@ -4,19 +4,22 @@ from bs4 import BeautifulSoup
 
 host_url = "http://www.shiyanlou.com{}"
 
-count = 0
+course_count = 0
+study_num = 0
 def get_course_link(url):
     res = requests.get(url)
     soup = BeautifulSoup(res.text, 'lxml')
     # soup = BeautifulSoup(html, 'lxml')
     course = soup.find_all('div', {'class': 'col-md-4', 'class': 'col-sm-6', 'class': 'course'})
     for i in course:
-        global count
-        count = count + 1
+        global course_count
+        global study_num
+        course_count = course_count + 1
         href = i.find('a',{'class':'course-box'}).get('href')
         title = i.find('span', {'class': 'course-title'}).get_text()
         study_people = i.find('span', {'class': 'course-per-num', 'class': 'pull-left'}).get_text()
         study_people = re.sub("\D", "", study_people)  # 数字这里有太多的空格和回车，清理一下
+        study_num  = study_num + int(study_people)
         try:
             tag = i.find('span', {'class': 'course-per-num', 'class': 'pull-right'}).get_text()
         except:
@@ -48,5 +51,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print("课程总数：{}".format(count))
+    print("课程总数：{}   学习总次数：{}".format(course_count, study_num))
     # get_course_link('www.demo.com')
