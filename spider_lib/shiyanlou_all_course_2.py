@@ -1034,7 +1034,9 @@ def parse_content(url, title, tag, study_num):
     for i in type_list:
         if type_list.index(i)!=0 and type_list.index(i)!=len(type_list)-1:
             types.append(i.get_text())
-    print(types)
+    info = soup.find('div',{'class':'course-infobox-content'})
+    info = info.find('p').get_text()
+    print(info)
 
 def get_course_link(url):
     res = requests.get(url)
