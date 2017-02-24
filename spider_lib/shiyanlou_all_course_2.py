@@ -1038,7 +1038,13 @@ def parse_content(url, title, tag, study_num):
     info = info.find('p').get_text()
     name = soup.find('div',{'class':'name'})
     name = name.find('strong').get_text()
-    print(name)
+    labs = soup.find('div',{'id':'labs'})
+    test_list = labs.find_all('div',{'class':'lab-item'})
+    tests_name = []
+    for i in test_list:
+        name = i.find('div',{'class':'lab-item-title'}).get_text()
+        tests_name.append(name)
+    print(tests_name)
 
 
 def get_course_link(url):
