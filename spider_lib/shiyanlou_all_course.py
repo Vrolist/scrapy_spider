@@ -2,8 +2,23 @@ import requests
 import re
 from bs4 import BeautifulSoup
 
+host_url = "http://www.shiyanlou.com{}"
+def get_course_link(url):
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text, 'lxml')
+    # soup = BeautifulSoup(html, 'lxml')
+    course = soup.find_all('div', {'class': 'col-md-4', 'class': 'col-sm-6', 'class': 'course'})
+    for i in course:
+        href = i.find('a',{'class':'course-box'}).get('href')
+        title = i.find('span', {'class': 'course-title'}).get_text()
+        study_people = i.find('span', {'class': 'course-per-num', 'class': 'pull-left'}).get_text()
+        study_people = re.sub("\D", "", study_people)  # 数字这里有太多的空格和回车，清理一下
+        try:
+            tag = i.find('span', {'class': 'course-per-num', 'class': 'pull-right'}).get_text()
+        except:
+            tag = "课程"
+        print("{}    学习人数:{}    {}   课程链接:{}\n".format(tag, study_people, title,host_url.format(href) ))
 
-host_url = ""
 def main():
     res = requests.get('https://www.shiyanlou.com/courses/')
     soup = BeautifulSoup(res.text, 'lxml')
@@ -23,12 +38,10 @@ def main():
             page_num = li_num
     # print(page_num,type(page_num))
     for i in range(1,page_num+1):
-        # print(i)
+        # print(course_link.format(i))
         get_course_link(course_link.format(i))
-
-def get_course_link(url):
-    print(url)
 
 
 if __name__ == "__main__":
     main()
+    # get_course_link('www.demo.com')
