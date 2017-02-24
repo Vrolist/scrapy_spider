@@ -1019,6 +1019,7 @@ html = '''<body>
 </body>'''
 def parse_content(url, title, tag, study_num):
     res = requests.get(url)
+    print(url,'&'*10)
     soup = BeautifulSoup(res.text, 'lxml')
     # soup = BeautifulSoup(html, 'lxml')
     type_list = soup.select('ol[class=breadcrumb] > li > a')
