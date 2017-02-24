@@ -1251,6 +1251,7 @@ def get_course_link(url):
         except:
             tag = "课程"
         parse_content(url=host_url.format(href),title=title,tag=tag,study_num=study_people)
+        time.sleep(0.5)
         # print("{}    学习人数:{}    {}   课程链接:{}\n".format(tag, study_people, title,host_url.format(href) ))
 
 def main():
