@@ -1,6 +1,7 @@
 import requests
 import re
 from bs4 import BeautifulSoup
+import time
 
 host_url = "http://www.shiyanlou.com{}"
 html = '''<body>
@@ -66,7 +67,7 @@ html = '''<body>
                         <li><a class="btn btn-primary" id="header-continue-lab" href="/courses/running">继续实验</a></li>
 
 
-                <li data-v-07a2dd56="" class="header-message"><a data-v-07a2dd56="" href="/user/message"><i data-v-07a2dd56="" class="fa fa-bell-o"></i> <div data-v-07a2dd56="" class="mark"></div></a> <!----></li>
+                <li data-v-07a2dd56="" class="header-message"><a data-v-07a2dd56="" href="/user/message"><i data-v-07a2dd56="" class="fa fa-bell-o"></i> <!----></a> <!----></li>
 
 
                 <li data-v-815c5224="" class="header-userbox dropdown"><a data-v-815c5224="" data-toggle="dropdown" class="dropdown-toggle"><img data-v-815c5224="" src="https://dn-simplecloud.shiyanlou.com/gravatarNTY0MzE5MDc1OTIx.png?v=1467272233337&amp;imageView2/1/w/200/h/200" class="header-avatar"> <img data-v-815c5224="" src="https://static.shiyanlou.com/img/icon-vip.png" class="vip-icon"> <span data-v-815c5224="" class="caret"></span></a> <ul data-v-815c5224="" class="dropdown-menu"><li data-v-815c5224=""><a data-v-815c5224="" href="/user/63246/">我的主页</a></li> <li data-v-815c5224=""><a data-v-815c5224="" href="/user/profile">个人设置</a></li> <li data-v-815c5224=""><a data-v-815c5224="" href="/logout">安全退出</a></li></ul></li>
@@ -107,15 +108,15 @@ html = '''<body>
 
     <li>
 
-    <a href="/courses/?tag=Web">Web</a>，
+    <a href="/courses/?tag=C%2FC%2B%2B">C/C++</a>，
 
-    <a href="/courses/?tag=HTML5">HTML5</a>
+    <a href="/courses/?tag=%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E8%AF%BE">计算机专业课</a>
 
     </li>
 
     <li class="active">
-        <a href="/courses/361">
-        基于HTML5 Canvas实现小游戏
+        <a href="/courses/605">
+        C++11/14 高速上手教程
         </a>
     </li>
 </ol>
@@ -145,17 +146,17 @@ html = '''<body>
 
 
     <div class="side-image side-image-mobile">
-        <img src="https://dn-simplecloud.shiyanlou.com/ncn361.jpg?imageView2/0/h/300">
+        <img src="https://dn-simplecloud.shiyanlou.com/1471329788157.png?imageView2/0/h/300">
     </div>
     <div class="content course-infobox">
         <div class="clearfix course-infobox-header">
             <h4 class="pull-left course-infobox-title">
 
-                <span>基于HTML5 Canvas实现小游戏</span>
+                <span>C++11/14 高速上手教程</span>
 
             </h4>
-            <div class="pull-right course-infobox-follow" data-follow-url="/courses/361/follow" data-unfollow-url="/courses/361/unfollow">
-                <span class="course-infobox-followers">157</span>
+            <div class="pull-right course-infobox-follow" data-follow-url="/courses/605/follow" data-unfollow-url="/courses/605/unfollow">
+                <span class="course-infobox-followers">203</span>
                 <span>人关注</span>
 
                 <i class="fa fa-star-o"></i>
@@ -164,17 +165,35 @@ html = '''<body>
         </div>
         <div class="clearfix course-infobox-body">
             <div class="course-infobox-content">
-            <p>本课程基于 HTML5 的 canvas 实现了一个小游戏，着重介绍了 HTML5 游戏开发的流程及游戏开发中需要处理的东西。对 Web 游戏开发感兴趣的同学可以通过这个项目实践 HTML5 及 JavaScript 基础知识。</p>
+            <p>C++11 的出现及C++14 对 C++11的重要补充，让 C++ 这门古老的语言注入了新的活力。如果你还在使用传统 C++，打着 C++ 的名号写出 C 语言代码，请停下来。本教程将带领你快速上手 C++11/14 的重要特性。</p>
 
             </div>
 
             <div class="course-infobox-progress">
 
-                    <div class="course-progress-finished"></div>
+
+
+                    <div class="course-progress-next"></div>
 
 
 
-                <span>（1/1）</span>
+                    <div class="course-progress-new"></div>
+
+                    <div class="course-progress-new"></div>
+
+                    <div class="course-progress-new"></div>
+
+                    <div class="course-progress-new"></div>
+
+                    <div class="course-progress-new"></div>
+
+                    <div class="course-progress-new"></div>
+
+                    <div class="course-progress-new"></div>
+
+                    <div class="course-progress-new"></div>
+
+                <span>（0/9）</span>
             </div>
 
 
@@ -189,7 +208,7 @@ html = '''<body>
 
         <div class="clearfix course-infobox-footer">
 
-            <div class="pull-right course-infobox-learned">3728 人学过</div>
+            <div class="pull-right course-infobox-learned">1971 人学过</div>
         </div>
 
     </div>
@@ -206,10 +225,7 @@ html = '''<body>
             <div role="tabpanel" class="tab-pane active" id="labs">
 
 
-<div class="lab-item ">
 
-    <div class="lab-item-title" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="HTML5 Canvas小游戏">HTML5 Canvas小游戏</div>
-</div>
 
 
     <div class="lab-item ">
@@ -219,16 +235,195 @@ html = '''<body>
 
     </div>
     <div class="lab-item-index">第1节</div>
-    <div class="lab-item-title" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="HTML5 Canvas小游戏">HTML5 Canvas小游戏</div>
+    <div class="lab-item-title" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="C++11/14 简介">C++11/14 简介</div>
     <div class="pull-right lab-item-ctrl">
 
 
 
-                         <a class="btn btn-default" href="/courses/361/labs/1158/document" target="_blank">查看文档</a>
 
 
 
-                        <a class="btn btn-primary  member-vm lab-item-start-newlab" data-mobile-url="/courses/document/1158" href="#" data-url="/courses/start/1158" data-labid="1158" data-next="/courses/running">开始实验</a>
+
+
+
+
+
+
+
+
+                         <a class="btn btn-default" href="/courses/605/labs/2022/document" target="_blank">查看文档</a>
+
+
+
+                        <a class="btn btn-primary  member-vm lab-item-start-newlab" data-mobile-url="/courses/document/2022" href="#" data-url="/courses/start/2022" data-labid="2022" data-next="/courses/running">开始实验</a>
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+    <div class="lab-item can-not-start">
+    <div class="lab-item-status">
+
+            <img src="https://static.shiyanlou.com/img/lab-not-ok.png">
+
+    </div>
+    <div class="lab-item-index">第2节</div>
+    <div class="lab-item-title" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="语言可用性的强化">语言可用性的强化</div>
+    <div class="pull-right lab-item-ctrl">
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+    <div class="lab-item can-not-start">
+    <div class="lab-item-status">
+
+            <img src="https://static.shiyanlou.com/img/lab-not-ok.png">
+
+    </div>
+    <div class="lab-item-index">第3节</div>
+    <div class="lab-item-title" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="语言运行期的强化">语言运行期的强化</div>
+    <div class="pull-right lab-item-ctrl">
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+    <div class="lab-item can-not-start">
+    <div class="lab-item-status">
+
+            <img src="https://static.shiyanlou.com/img/lab-not-ok.png">
+
+    </div>
+    <div class="lab-item-index">第4节</div>
+    <div class="lab-item-title" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="对标准库的扩充: 新增容器">对标准库的扩充: 新增容器</div>
+    <div class="pull-right lab-item-ctrl">
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+    <div class="lab-item can-not-start">
+    <div class="lab-item-status">
+
+            <img src="https://static.shiyanlou.com/img/lab-not-ok.png">
+
+    </div>
+    <div class="lab-item-index">第5节</div>
+    <div class="lab-item-title" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="对标准库的扩充: 智能指针和引用计数">对标准库的扩充: 智能指针和引用计数</div>
+    <div class="pull-right lab-item-ctrl">
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+    <div class="lab-item can-not-start">
+    <div class="lab-item-status">
+
+            <img src="https://static.shiyanlou.com/img/lab-not-ok.png">
+
+    </div>
+    <div class="lab-item-index">第6节</div>
+    <div class="lab-item-title" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="对标准库的扩充: 正则表达式">对标准库的扩充: 正则表达式</div>
+    <div class="pull-right lab-item-ctrl">
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+    <div class="lab-item can-not-start">
+    <div class="lab-item-status">
+
+            <img src="https://static.shiyanlou.com/img/lab-not-ok.png">
+
+    </div>
+    <div class="lab-item-index">第7节</div>
+    <div class="lab-item-title" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="对标准库的扩充: 语言级线程支持">对标准库的扩充: 语言级线程支持</div>
+    <div class="pull-right lab-item-ctrl">
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+    <div class="lab-item can-not-start">
+    <div class="lab-item-status">
+
+            <img src="https://static.shiyanlou.com/img/lab-not-ok.png">
+
+    </div>
+    <div class="lab-item-index">第8节</div>
+    <div class="lab-item-title" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="其他杂项">其他杂项</div>
+    <div class="pull-right lab-item-ctrl">
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+    <div class="lab-item can-not-start">
+    <div class="lab-item-status">
+
+            <img src="https://static.shiyanlou.com/img/lab-not-ok.png">
+
+    </div>
+    <div class="lab-item-index">第9节</div>
+    <div class="lab-item-title" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="扩展主题: C++17 简介">扩展主题: C++17 简介</div>
+    <div class="pull-right lab-item-ctrl">
 
 
 
@@ -245,13 +440,13 @@ html = '''<body>
     <div class="content">
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active">
-                <a href="#comments" class="stat-event" aria-controls="comments" role="tab" data-stat="course_comment" data-toggle="tab">课程评论(8)</a>
+                <a href="#comments" class="stat-event" aria-controls="comments" role="tab" data-stat="course_comment" data-toggle="tab">课程评论(6)</a>
             </li>
             <li role="presentation">
                 <a href="#reports" class="stat-event" data-stat="course_report" aria-controls="reports" role="tab" data-toggle="tab">实验报告(3)</a>
             </li>
             <li role="presentation">
-                <a href="#questions" class="stat-event" data-stat="course_question" aria-controls="questions" role="tab" data-toggle="tab">实验问答(5)</a>
+                <a href="#questions" class="stat-event" data-stat="course_question" aria-controls="questions" role="tab" data-toggle="tab">实验问答(12)</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -267,8 +462,8 @@ html = '''<body>
                     <div class="comment-title">最新评论</div>
                     <div class="comment-list"><div class="row comment-list-item"><div class="col-md-1">
         <div class="user-avatar ">
-            <a class="avatar" href="/user/319811/" target="_blank">
-                <img src="https://dn-simplecloud.shiyanlou.com/gravatarEDL2VAMF5C8S.jpg?imageView2/1/w/200/h/200">
+            <a class="avatar" href="/user/363361/" target="_blank">
+                <img src="https://dn-simplecloud.shiyanlou.com/gravatarFE52689MWRVK.jpg?imageView2/1/w/200/h/200">
             </a>
 
             <a class="member-icon" href="/vip" target="_blank">
@@ -276,84 +471,87 @@ html = '''<body>
             </a>
         </div></div><div class="col-md-11 comment-item-body">
         <div class="user-username">
-            <a class="username" href="/user/319811/" target="_blank">
-                Lilliput_
+            <a class="username" href="/user/363361/" target="_blank">
+                LOU838904294
             </a>
-            <span class="user-level">L61</span>
-        </div><div class="comment-item-content markdown-box"><p>good</p>
-</div><div class="comment-item-date">3月前</div><div class="comment-item-lab">来自：HTML5 Canvas小游戏</div><div class="comment-item-reply" data-pid="9054"><i class="fa fa-share"></i>回复</div></div></div><div class="row comment-list-item"><div class="col-md-1">
+            <span class="user-level">L39</span>
+        </div><div class="comment-item-content markdown-box"><p>加油</p>
+</div><div class="comment-item-date">2周前</div><div class="comment-item-lab">来自：语言可用性的强化</div><div class="comment-item-reply" data-pid="11975"><i class="fa fa-share"></i>回复</div></div></div><div class="row comment-list-item"><div class="col-md-1">
         <div class="user-avatar ">
-            <a class="avatar" href="/user/312917/" target="_blank">
-                <img src="https://dn-simplecloud.shiyanlou.com/gravatarY4TU3H9VJDN8.jpg?imageView2/1/w/200/h/200">
+            <a class="avatar" href="/user/120559/" target="_blank">
+                <img src="https://dn-simplecloud.shiyanlou.com/gravatarLD7768ZMKCJL.jpg?imageView2/1/w/200/h/200">
             </a>
 
         </div></div><div class="col-md-11 comment-item-body">
         <div class="user-username">
-            <a class="username" href="/user/312917/" target="_blank">
-                zpyzpy
+            <a class="username" href="/user/120559/" target="_blank">
+                freeitdog
             </a>
-            <span class="user-level">L4</span>
-        </div><div class="comment-item-content markdown-box"><p>会卡</p>
-</div><div class="comment-item-date">3月前</div><div class="comment-item-lab">来自：HTML5 Canvas小游戏</div><div class="comment-item-reply" data-pid="8566"><i class="fa fa-share"></i>回复</div></div></div><div class="row comment-list-item"><div class="col-md-1">
+            <span class="user-level">L2</span>
+        </div><div class="comment-item-content markdown-box"><p>教程很给力。</p>
+</div><div class="comment-item-date">2月前</div><div class="comment-item-lab">来自：语言可用性的强化</div><div class="comment-item-reply" data-pid="9281"><i class="fa fa-share"></i>回复</div></div></div><div class="row comment-list-item"><div class="col-md-1">
         <div class="user-avatar ">
-            <a class="avatar" href="/user/166939/" target="_blank">
-                <img src="https://dn-simplecloud.shiyanlou.com/gravatarMQVVJLCVCQ4Q.jpg?imageView2/1/w/200/h/200">
+            <a class="avatar" href="/user/289681/" target="_blank">
+                <img src="https://dn-simplecloud.shiyanlou.com/gravatarUYAGUC3PG4AR.jpg?imageView2/1/w/200/h/200">
             </a>
 
         </div></div><div class="col-md-11 comment-item-body">
         <div class="user-username">
-            <a class="username" href="/user/166939/" target="_blank">
-                tonylinx
+            <a class="username" href="/user/289681/" target="_blank">
+                xiaolong9000
             </a>
             <span class="user-level">L1</span>
-        </div><div class="comment-item-content markdown-box"><p>good!</p>
-</div><div class="comment-item-date">5月前</div><div class="comment-item-reply" data-pid="5271"><i class="fa fa-share"></i>回复</div></div></div><div class="row comment-list-item"><div class="col-md-1">
+        </div><div class="comment-item-content markdown-box"><p>第一节的没调试出来。。。一直在弹add()函数未定义</p>
+</div><div class="comment-item-date">3月前</div><div class="comment-item-lab">来自：C++11/14 简介</div><div class="comment-item-reply" data-pid="7825"><i class="fa fa-share"></i>回复</div></div></div><div class="row comment-list-item"><div class="col-md-1">
         <div class="user-avatar ">
-            <a class="avatar" href="/user/250563/" target="_blank">
-                <img src="https://dn-simplecloud.shiyanlou.com/gravatar7RMGKTWMHFGM.jpg?imageView2/1/w/200/h/200">
+            <a class="avatar" href="/user/297983/" target="_blank">
+                <img src="https://dn-simplecloud.shiyanlou.com/gravatarNT84PQ6MSVCD.jpg?imageView2/1/w/200/h/200">
             </a>
 
         </div></div><div class="col-md-11 comment-item-body">
         <div class="user-username">
-            <a class="username" href="/user/250563/" target="_blank">
-                璎珞桐
+            <a class="username" href="/user/297983/" target="_blank">
+                LOU4215424364
             </a>
-            <span class="user-level">L21</span>
-        </div><div class="comment-item-content markdown-box"><p>在reset（）函数里面加入if else通过monstersCaught的值来判断，就可以实现将hero在捕捉到monster的时候让hero就停留在捕获的位置</p>
-</div><div class="comment-item-date">5月前</div><div class="comment-item-reply" data-pid="5264"><i class="fa fa-share"></i>回复</div></div></div><div class="row comment-list-item"><div class="col-md-1">
+            <span class="user-level">L1</span>
+        </div><div class="comment-item-content markdown-box"><p>尝试一下实验环境，感觉实验环境不太流畅</p>
+</div><div class="comment-item-date">4月前</div><div class="comment-item-lab">来自：C++11/14 简介</div><div class="comment-item-reply" data-pid="7434"><i class="fa fa-share"></i>回复</div></div></div><div class="row comment-list-item"><div class="col-md-1">
         <div class="user-avatar ">
-            <a class="avatar" href="/user/255202/" target="_blank">
-                <img src="https://dn-simplecloud.shiyanlou.com/gravatarZHSTPGKMYA73.jpg?imageView2/1/w/200/h/200">
+            <a class="avatar" href="/user/281060/" target="_blank">
+                <img src="https://dn-simplecloud.shiyanlou.com/gravatarXSESXLMLPPX8.jpg?imageView2/1/w/200/h/200">
             </a>
 
         </div></div><div class="col-md-11 comment-item-body">
         <div class="user-username">
-            <a class="username" href="/user/255202/" target="_blank">
-                MrFu
+            <a class="username" href="/user/281060/" target="_blank">
+                xuhuoren
             </a>
-            <span class="user-level">L9</span>
-        </div><div class="comment-item-content markdown-box"><p>写完发现不行呀</p>
-</div><div class="comment-item-date">5月前</div><div class="comment-item-reply" data-pid="5167"><i class="fa fa-share"></i>回复</div></div></div><div class="row comment-list-item"><div class="col-md-1">
-        <div class="user-avatar ">
-            <a class="avatar" href="/user/164325/" target="_blank">
-                <img src="https://dn-simplecloud.shiyanlou.com/gravatarP3ZRZF74FE9X.jpg?imageView2/1/w/200/h/200">
-            </a>
-
-        </div></div><div class="col-md-11 comment-item-body">
-        <div class="user-username">
-            <a class="username" href="/user/164325/" target="_blank">
-                CherryUI
-            </a>
-            <span class="user-level">L35</span>
-        </div><div class="comment-item-content markdown-box"><p>nice</p>
-</div><div class="comment-item-date">1年前</div><div class="comment-item-reply" data-pid="3400"><i class="fa fa-share"></i>回复</div></div></div></div>
+            <span class="user-level">L3</span>
+        </div><div class="comment-item-content markdown-box"><p>蛮实用的</p>
+</div><div class="comment-item-date">4月前</div><div class="comment-item-lab">来自：语言可用性的强化</div><div class="comment-item-reply" data-pid="6384"><i class="fa fa-share"></i>回复</div></div></div></div>
                     <div class="pagination-container"></div>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="reports">
 				<span class="lab-id active" data-lab-id="None">全部</span>
 
-				<span class="lab-id" data-lab-id="1158">第1节</span>
+				<span class="lab-id" data-lab-id="2022">第1节</span>
+
+				<span class="lab-id" data-lab-id="2023">第2节</span>
+
+				<span class="lab-id" data-lab-id="2024">第3节</span>
+
+				<span class="lab-id" data-lab-id="2025">第4节</span>
+
+				<span class="lab-id" data-lab-id="2026">第5节</span>
+
+				<span class="lab-id" data-lab-id="2027">第6节</span>
+
+				<span class="lab-id" data-lab-id="2028">第7节</span>
+
+				<span class="lab-id" data-lab-id="2029">第8节</span>
+
+				<span class="lab-id" data-lab-id="2030">第9节</span>
 
                 <div class="report-owner">
                     <span class="owner-list" data-user-id="63246">我的报告</span> / <span class="owner-list active" data-user-id="None">所有报告</span>
@@ -375,7 +573,7 @@ html = '''<body>
         <div class="col-md-3 layout-side">
 
     <div class="side-image side-image-pc">
-        <img src="https://dn-simplecloud.shiyanlou.com/ncn361.jpg?imageView2/0/h/300">
+        <img src="https://dn-simplecloud.shiyanlou.com/1471329788157.png?imageView2/0/h/300">
     </div>
 
 
@@ -391,14 +589,13 @@ html = '''<body>
         <h4 class="sidebox-title">课程教师</h4>
     </div>
     <div class="sidebox-body mooc-content">
-        <a href="/user/7682/" target="_blank">
-            <img src="https://dn-simplecloud.shiyanlou.com/gravatar57aeee35c98205091e18d1140e9f38cf.png
-?imageView2/1/w/100/h/100">
+        <a href="/user/29879/" target="_blank">
+            <img src="https://dn-simplecloud.shiyanlou.com/gravatarNTY0MzE5MDQyNTU0.png?v=1465812864374&amp;imageView2/1/w/200/h/200">
         </a>
         <div class="mooc-info">
-            <div class="name"><strong>JellyBool</strong> </div>
+            <div class="name"><strong>欧龙崎</strong> </div>
 
-            <div class="courses">共发布过<strong>8</strong>门课程</div>
+            <div class="courses">共发布过<strong>15</strong>门课程</div>
         </div>
         <div class="mooc-extra-info">
             <div class="word long-paragraph">
@@ -407,7 +604,7 @@ html = '''<body>
         </div>
     </div>
     <div class="sidebox-footer mooc-footer">
-        <a href="/teacher/7682" target="_blank">查看老师的所有课程 &gt;</a>
+        <a href="/teacher/29879" target="_blank">查看老师的所有课程 &gt;</a>
     </div>
 </div>
 
@@ -423,32 +620,23 @@ html = '''<body>
 
 
 
-    <div class="sidebox pre-course">
-        <div class="sidebox-header">
-            <h4 class="sidebox-title">前置课程</h4>
+
+    <div class="sidebox recommend-courses">
+        <div class="sidebox-header recommend-courses-header">
+            <h4 class="sidebox-title">推荐课程</h4>
         </div>
-        <div class="sidebox-body course-content">
+        <div class="sidebox-body recommend-courses-content">
 
-            <a href="/courses/21">Javascript基础（新版）</a>
+            <a href="/courses/750">C语言实现大数计算器（加减乘除）</a>
 
-        </div>
-    </div>
+            <a href="/courses/453">C 语言经典项目实战</a>
 
+            <a href="/courses/584">C 语言实现Linux who命令</a>
 
-
-    <div class="sidebox adv-course">
-        <div class="sidebox-header">
-            <h4 class="sidebox-title">进阶课程</h4>
-        </div>
-        <div class="sideobx-body course-content">
-
-            <a href="/courses/144">网页版扫雷</a>
-
-            <a href="/courses/161">网页版拼图游戏</a>
+            <a href="/courses/454">C++ 经典项目实战</a>
 
         </div>
     </div>
-
 
 
 
@@ -516,7 +704,7 @@ html = '''<body>
             </div>
             <div class="modal-body words-ctrl">
                 <form class="form-horizontal" action="/questions/">
-                    <input name="_csrf_token" value="1488029393##1d0f890f80bff194a1a7ab38c06640b612ed334f" type="hidden">
+                    <input name="_csrf_token" value="1488039200##0973d62ee051c275d574f3cc48afbc24adf243c6" type="hidden">
                     <div class="form-group">
                         <label class="col-md-2 control-label">标题</label>
                         <div class="col-md-10">
@@ -569,7 +757,7 @@ html = '''<body>
                 <button type="button" class="btn btn-default mkeditor-btn-listul">
                     <i class="fa fa-list-ul"></i>
                 </button>
-            <div id="html5_1b9o50bt61s81q6s1gj11cuaqs53_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 0px; width: 0px; height: 0px; overflow: hidden; z-index: 0;"><input id="html5_1b9o50bt61s81q6s1gj11cuaqs53" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="" type="file"></div></div>
+            <div id="html5_1b9oebm5cbqd1cn1ttganh1ile3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 0px; width: 0px; height: 0px; overflow: hidden; z-index: 0;"><input id="html5_1b9oebm5cbqd1cn1ttganh1ile3" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="" type="file"></div></div>
             <div class="btn-group pull-right" role="group">
                 <a style="font-size:12px; color:#666; text-decoration:underline;" href="/questions/764" target="_blank">
                     <i class="fa fa-question-circle"></i>Markdown 语法
@@ -683,14 +871,14 @@ html = '''<body>
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">激活项目课：基于HTML5 Canvas实现小游戏</h4>
+                <h4 class="modal-title">激活项目课：C++11/14 高速上手教程</h4>
 			</div>
 			<div class="modal-body">
 				<div style="font-size:14px; font-weight:thin;">
-					本课程基于 HTML5 的 canvas 实现了一个小游戏，着重介绍了 HTML5 游戏开发的流程及游戏开发中需要处理的东西。对 Web 游戏开发感兴趣的同学可以通过这个项目实践 HTML5 及 JavaScript 基础知识。
+					C++11 的出现及C++14 对 C++11的重要补充，让 C++ 这门古老的语言注入了新的活力。如果你还在使用传统 C++，打着 C++ 的名号写出 C 语言代码，请停下来。本教程将带领你快速上手 C++11/14 的重要特性。
 				</div>
 				<div style="margin:36px 0 18px; font-size:16px; font-weight:bold;">
-                    您有 <span style="color:#f66;"><strong>24</strong></span> 个实验豆，激活本课程需要消耗 <span style="color:#f66;"><strong>0</strong></span> 个实验豆！
+                    您有 <span style="color:#f66;"><strong>25</strong></span> 个实验豆，激活本课程需要消耗 <span style="color:#f66;"><strong>0</strong></span> 个实验豆！
 				</div>
                 <div style="color:#84B61A; font-size:14px; font-weight:bold;">激活后可不限次数学习本课。<a href="/faq#shiyandou" style="font-weight:normal;" target="_blank">如何获得实验豆？</a></div>
 			</div>
@@ -714,7 +902,7 @@ html = '''<body>
             </div>
             <div class="modal-body">
                 <form class="row form-horizontal">
-                     <input name="_csrf_token" value="1488029393##1d0f890f80bff194a1a7ab38c06640b612ed334f" type="hidden">
+                     <input name="_csrf_token" value="1488039200##0973d62ee051c275d574f3cc48afbc24adf243c6" type="hidden">
                     <div class="form-group">
                         <label class="col-md-2 control-label">邮箱</label>
                         <div class="col-md-10">
@@ -892,7 +1080,7 @@ html = '''<body>
 </div>
 
 
-    <div id="base-data" data-flash="false" data-is-login="true" data-jwt-token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzaGl5YW5sb3U6d2ViOmFwcCIsInVuYW1lIjoiXHU1ZTAzXHU1NTY2XHU4YzQ2IiwidWlkIjoiNjMyNDYiLCJleHAiOjE0ODgwMjkzOTMsImlhdCI6MTQ4Nzk0Mjk5M30.FqK40clE_h9Vxqkk_QVSDgZmbG726HiIQ_tvOVHGL8U" data-user-id="63246" data-is-jwt="true" data-socket-url="wss://comet.shiyanlou.com" data-msg-user="" data-msg-system=""></div>
+    <div id="base-data" data-flash="false" data-is-login="true" data-jwt-token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzaGl5YW5sb3U6d2ViOmFwcCIsInVuYW1lIjoiXHU1ZTAzXHU1NTY2XHU4YzQ2IiwidWlkIjoiNjMyNDYiLCJleHAiOjE0ODgwMzkyMDAsImlhdCI6MTQ4Nzk1MjgwMH0.bfLBgbJm4kNWoC27QKmI42WeCg2jJcrXS3A_Cmywx1o" data-user-id="63246" data-is-jwt="true" data-socket-url="wss://comet.shiyanlou.com" data-msg-user="" data-msg-system=""></div>
 
     <!-- 不带 CSS 的库 -->
     <script async="" src="https://www.google-analytics.com/analytics.js"></script><script src="https://static.shiyanlou.com/static/babel-polyfill/6.20.0/polyfill.min.js"></script>
@@ -933,8 +1121,8 @@ html = '''<body>
     </script>
 
 
-<div id="jinja-data" data-userlab-id="3109382" data-course-id="361" data-is-authenticated="true" data-user-joined="true" data-user-logined="true" data-show-student-info-modal="false" data-login-url="/login?next=%2Fcourses%2F361" data-start-newlab-url="/courses/clear" data-faq="/faq" data-comment-post="/courses/361/comments" data-loginurl="/login?next=%2Fcourses%2F361" data-site-type="0" data-report-post="/courses/361/reports" data-recomment-img="https://static.shiyanlou.com/img/recommentReport.png" data-charge-course-phone-code="/user/sms/code" data-join-private-course="/courses/join" data-current-user-id="63246" data-vip-icon="https://static.shiyanlou.com/img/icon-vip.png" data-vip-index="/vip" data-get-question-url="/courses/361/questions" data-real-price="" data-query-bill="/purchase/bill/query" data-question-form="/questions/meta" data-qiniu-token-url="/api/qiniu/token"></div>
-<script src="/app/dist/js/course/labs.js?=201702222257"></script><div style="display: none; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; background: rgba(0, 0, 0, 0.5) none repeat scroll 0% 0%; text-align: center; z-index: 1600;"><i class="fa fa-spinner fa-pulse" style="margin-top: 244.4px; color: rgb(255, 255, 255); font-size: 35px;"></i></div><div id="global-zeroclipboard-html-bridge" class="global-zeroclipboard-container" style="position: absolute; left: 0px; top: -9999px; width: 1px; height: 1px; z-index: 999999999;"><object id="global-zeroclipboard-flash-bridge" name="global-zeroclipboard-flash-bridge" type="application/x-shockwave-flash" data="https://static.shiyanlou.com/static/zeroclipboard/2.3.0/ZeroClipboard.swf?noCache=1487942987732" height="100%" width="100%"><param name="allowScriptAccess" value="always"><param name="allowNetworking" value="all"><param name="menu" value="false"><param name="wmode" value="transparent"><param name="flashvars" value="trustedOrigins=www.shiyanlou.com%2C%2F%2Fwww.shiyanlou.com%2Chttps%3A%2F%2Fwww.shiyanlou.com&amp;swfObjectId=global-zeroclipboard-flash-bridge&amp;jsVersion=2.3.0"><div id="global-zeroclipboard-flash-bridge_fallbackContent">&nbsp;</div></object></div>
+<div id="jinja-data" data-userlab-id="3110008" data-course-id="605" data-is-authenticated="true" data-user-joined="true" data-user-logined="true" data-show-student-info-modal="false" data-login-url="/login?next=%2Fcourses%2F605" data-start-newlab-url="/courses/clear" data-faq="/faq" data-comment-post="/courses/605/comments" data-loginurl="/login?next=%2Fcourses%2F605" data-site-type="0" data-report-post="/courses/605/reports" data-recomment-img="https://static.shiyanlou.com/img/recommentReport.png" data-charge-course-phone-code="/user/sms/code" data-join-private-course="/courses/join" data-current-user-id="63246" data-vip-icon="https://static.shiyanlou.com/img/icon-vip.png" data-vip-index="/vip" data-get-question-url="/courses/605/questions" data-real-price="" data-query-bill="/purchase/bill/query" data-question-form="/questions/meta" data-qiniu-token-url="/api/qiniu/token"></div>
+<script src="/app/dist/js/course/labs.js?=201702222257"></script><div style="display: none; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; background: rgba(0, 0, 0, 0.5) none repeat scroll 0% 0%; text-align: center; z-index: 1600;"><i class="fa fa-spinner fa-pulse" style="margin-top: 244.4px; color: rgb(255, 255, 255); font-size: 35px;"></i></div><div id="global-zeroclipboard-html-bridge" class="global-zeroclipboard-container" style="position: absolute; left: 0px; top: -9999px; width: 1px; height: 1px; z-index: 999999999;"><object id="global-zeroclipboard-flash-bridge" name="global-zeroclipboard-flash-bridge" type="application/x-shockwave-flash" data="https://static.shiyanlou.com/static/zeroclipboard/2.3.0/ZeroClipboard.swf?noCache=1487952795869" height="100%" width="100%"><param name="allowScriptAccess" value="always"><param name="allowNetworking" value="all"><param name="menu" value="false"><param name="wmode" value="transparent"><param name="flashvars" value="trustedOrigins=www.shiyanlou.com%2C%2F%2Fwww.shiyanlou.com%2Chttps%3A%2F%2Fwww.shiyanlou.com&amp;swfObjectId=global-zeroclipboard-flash-bridge&amp;jsVersion=2.3.0"><div id="global-zeroclipboard-flash-bridge_fallbackContent">&nbsp;</div></object></div>
 
 
 
@@ -1019,9 +1207,11 @@ html = '''<body>
 </body>'''
 def parse_content(url, title, tag, study_num):
     res = requests.get(url)
-    print(url,'&'*10)
     soup = BeautifulSoup(res.text, 'lxml')
     # soup = BeautifulSoup(html, 'lxml')
+    if res.status_code != 200:
+        print(url,'&'*10)
+        time.sleep(5)
     type_list = soup.select('ol[class=breadcrumb] > li > a')
     types = []
     for i in type_list:
