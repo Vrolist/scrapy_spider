@@ -2,7 +2,7 @@ import requests
 import re
 from bs4 import BeautifulSoup
 import time
-from ..sqlite3_opera import insert_or_update_data
+from .sqlite3_opera import insert_or_update_data
 
 host_url = "http://www.shiyanlou.com{}"
 
