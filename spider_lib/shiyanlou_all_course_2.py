@@ -2,7 +2,7 @@ import requests
 import re
 from bs4 import BeautifulSoup
 import time
-
+from .sqlite3_opera import insert_or_update_data
 host_url = "http://www.shiyanlou.com{}"
 
 def write_file(string):
@@ -11,7 +11,6 @@ def write_file(string):
     log.close()
 
 def parse_content(url, title, tag, study_num):
-    print(url, '&' * 10)
     res = requests.get(url)
     soup = BeautifulSoup(res.text, 'lxml')
     type_list = soup.select('ol[class=breadcrumb] > li > a')
@@ -35,11 +34,7 @@ def parse_content(url, title, tag, study_num):
     for i in test_list:
         name = i.find('div',{'class':'lab-item-title'}).get_text()
         tests_name.append(name)
-    write_file("课程名：{}    老师：{}    tag:{}    学习人数：{}    类型：{}".format(title,teacher,tag,study_num,'&'.join(types)))
-    write_file("简介：{}".format(info))
-    for i in tests_name:
-        write_file(i)
-    write_file('*'*100)
+    print(url,insert_or_update_data(url, title, teacher, study_num, tag, '-'.join(types), info, '-'.join(tests_name)))
 
 
 
