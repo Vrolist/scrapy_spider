@@ -12,7 +12,6 @@ class movie87_spider(scrapy.Spider):
         number = 1
         if len(num_page) > 0:
             number = int(num_page[0].split('/')[-1].split('?')[0])
-        print(number)
         for i in range(1, number+1):
             print(response.url + str(i) + '?o=data')
             # yield scrapy.Request(response.url +'/'+ str(i) + '?o=data', meta={'tag': tag}, callback=self.parse_page)
