@@ -15,7 +15,7 @@ for i in pics:
     try:
         with open(pic_url.format(pic_name), 'wb') as f:
             f.write(pic_res.content)
-        print(src,'下载完成')
+        print(pic_name,'下载完成')
     except:
         print('图片无法保存，请在桌面上创建名为script_spider的文件夹')
         break
