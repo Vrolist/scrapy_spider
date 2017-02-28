@@ -1,17 +1,23 @@
 import scrapy
 import re
 import urllib
-
+from ..items import MovieSpiderItem
 class movie87_spider(scrapy.Spider):
     name = "comedy"
     allowed_domains = ["www.87movie.com"]
     start_urls = ["http://www.87movie.com/tag/%E5%96%9C%E5%89%A7/"]
 
+    def parse_info(self, response):
+        movie_info = response.meta['movie_info']
+        demo = response.meta['demo']
+        print(demo)
+
     def parse_page(self, response):
         movies = response.xpath('//ul[@class="list-unstyled mlist"]/li//h4/a/@href').extract()
         url_host = 'http://' + response.url.split('/')[2]
         for i in movies:
-            print(url_host+i)
+            movie_info = MovieSpiderItem()
+            yield scrapy.Request(url_host+i, meta={'movie_info': movie_info, 'demo':'demo demo demo demo demo demo'}, callback=self.parse_info)
 
     def parse(self,response):
         num_page = response.xpath('//ul[@class="pagination"]//li[last()]/a/@href').extract()

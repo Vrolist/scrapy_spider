@@ -7,8 +7,8 @@
 
 import scrapy
 
-
 class MovieSpiderItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    name = scrapy.Field()
+    pic = scrapy.Field()
+    content = scrapy.Field()
+    download = scrapy.Field()
