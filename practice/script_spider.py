@@ -12,6 +12,9 @@ for i in pics:
     pic_name = src.split('/')[-1]
     pic_url = '/home/shiyanlou/Desktop/script_spider/{}'
     pic_res = requests.get(src)
-
-    with open(pic_url.format(pic_name), 'wb') as f:
-        f.write(pic_res.content)
+    try:
+        with open(pic_url.format(pic_name), 'wb') as f:
+            f.write(pic_res.content)
+    except:
+        print('脚本运行前，请在桌面上创建名为script_spider的文件夹')
+        break
