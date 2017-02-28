@@ -1,6 +1,4 @@
 import scrapy
-import re
-import urllib
 from ..items import MovieSpiderItem
 class movie87_spider(scrapy.Spider):
     name = "comedy"
@@ -9,15 +7,15 @@ class movie87_spider(scrapy.Spider):
 
     def parse_info(self, response):
         movie_info = response.meta['movie_info']
-        demo = response.meta['demo']
-        print(demo)
+        movie_info['name'] = response.xpath('//div[@class="white-div"]//h3/text()').extract()
+        print(movie_info['name'])
 
     def parse_page(self, response):
         movies = response.xpath('//ul[@class="list-unstyled mlist"]/li//h4/a/@href').extract()
         url_host = 'http://' + response.url.split('/')[2]
         for i in movies:
             movie_info = MovieSpiderItem()
-            yield scrapy.Request(url_host+i, meta={'movie_info': movie_info, 'demo':'demo demo demo demo demo demo'}, callback=self.parse_info)
+            yield scrapy.Request(url_host+i, meta={'movie_info': movie_info}, callback=self.parse_info)
 
     def parse(self,response):
         num_page = response.xpath('//ul[@class="pagination"]//li[last()]/a/@href').extract()
