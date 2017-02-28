@@ -64,9 +64,9 @@ DOWNLOAD_DELAY = 1
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    'movie_spider.pipelines.MovieSpiderPipeline': 300,
-# }
+ITEM_PIPELINES = {
+   'movie_spider.pipelines.MovieSpiderPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
