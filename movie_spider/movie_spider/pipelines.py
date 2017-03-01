@@ -23,10 +23,10 @@ class MovieSpiderPipeline(object):
             self.file.write(line)
             return item
         else:
-            print('name',type(item['name']),len(item['name']))
-            print('pic',type(item['pic']),len(item['pic']))
-            print('contnet',type(item['content']),len(item['content']))
-            print('download',type(item['download']),len(item['download']))
+            line = json.dumps(dict(item), ensure_ascii=False) + "\n"
+            self.file.write(line)
+            return item
+
 
     def spider_closed(self, spider):
         self.file.close()
