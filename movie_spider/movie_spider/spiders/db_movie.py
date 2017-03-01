@@ -12,7 +12,7 @@ class db_movie(scrapy.Spider):
         movie_info['pic'] = response.xpath("//div[@id='mainpic']/a/img/@src").extract()
         movie_info['content'] = response.xpath("//div[@id='link-report']/span/text()").extract()
         movie_info['download'] = ""
-        print(movie_info)
+        return movie_info
 
     def parse(self, response):
         movie_links = response.xpath("//div[@id='showing-soon']/div/div/h3/a/@href").extract()
