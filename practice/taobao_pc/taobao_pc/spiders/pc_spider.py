@@ -8,4 +8,4 @@ class taobao_pc(scrapy.Spider):
     def parse(self, response):
         print(response)
         sells = response.xpath("//div[@id='spulist-grid']/div/div/div").extract()
-        print(len(sells))
+        print(len(sells)),type(sells)
