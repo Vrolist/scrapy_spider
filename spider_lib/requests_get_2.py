@@ -5,7 +5,7 @@ res = requests.get('https://www.shiyanlou.com/courses/')
 soup = BeautifulSoup(res.text, 'lxml')
 course = soup.find_all('div',{'class':'col-md-4','class':'col-sm-6','class':'course'})
 for i in course:
-    title = i.find('span',{'class':'course-title'}).get_text()
+    title = i.find('div',{'class':'course-name'}).get_text()
     study_people = i.find('span',{'class':'course-per-num','class':'pull-left'}).get_text()
     study_people = re.sub("\D", "", study_people)# 数字这里有太多的空格和回车，清理一下
     try:
